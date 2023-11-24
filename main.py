@@ -12,11 +12,14 @@ while True:
     if choice == 2:
         name = str(input("Enter the name: "))
         result = database.read(name, opModes)
-        print("Name: " + str(result[0]))
-        print("Aliance: " + str(result[1]))
-        print("Start Location: " + str(result[2]))
-        print("Max Score: " + str(result[3]))
-        print("Concistancy rating: " + str(result[4]))
+        if len(result) > 1:
+            print("Name: " + str(result[0]))
+            print("Aliance: " + str(result[1]))
+            print("Start Location: " + str(result[2]))
+            print("Max Score: " + str(result[3]))
+            print("Concistancy rating: " + str(result[4]))
+        else:
+            print("That OpMode does not exist")
 
     if choice == 3:
         name = str(input("enter the name: "))
@@ -31,12 +34,8 @@ while True:
         opModes = database.load()
     if choice == 6:
         name = str(input("Enter the name: "))
-        if database.read(name, opModes):
-            for opMode in opModes:
-                if opMode in database[name]:
-                    del database[name][opMode]
-                    print(f'opMode {opMode} deleted')
-                else:
-                    print(f'opMode {opMode} does not exist')
-        else:
-            print(f'Name {name} does not exist')
+        complete = database.delete(name, opModes)
+        if complete:
+            print(str(name) + "was sucessfully deleted")
+        if not complete:
+            print("OpMode does not exist")

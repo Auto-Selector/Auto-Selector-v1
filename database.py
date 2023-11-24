@@ -41,5 +41,14 @@ def newOpMode(listname, name, side, location, score, concistency):
 
 ##reads a given opmode from its name
 def read(name, listName):
-    desiredOpModes = [opMode for opMode in listName if name.lower() == str(opMode[0]).lower()]
-    return desiredOpModes[0]
+    desiredOpMode = [opMode for opMode in listName if name.lower() == str(opMode[0]).lower()] 
+    return desiredOpMode[0]
+
+def delete(name, listName):
+    index = next((i for i, opMode in enumerate(listName) if name.lower() == str(opMode[0]).lower()), None)
+    print(index)
+    if index != 'None':
+        listName.pop(index)
+        return True
+    elif index == 'None':
+        return False
