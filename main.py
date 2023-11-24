@@ -12,12 +12,17 @@ while True:
     if choice == 2:
         name = str(input("Enter the name: "))
         result = database.read(name, opModes)
-        print(result)
+        print("Name: " + str(result[0]))
+        print("Aliance: " + str(result[1]))
+        print("Start Location: " + str(result[2]))
+        print("Max Score: " + str(result[3]))
+        print("Concistancy rating: " + str(result[4]))
+
     if choice == 3:
         name = str(input("enter the name: "))
         side = str(input("enter the side: "))
         location = str(input("enter the location: "))
-        score = str(input("enter the max score" ))
+        score = str(input("enter the max score: " ))
         concistancy = str(input("enter the concistency(1-10): "))
         opModes = database.newOpMode(opModes, name, side, location, score, concistancy)
     if choice == 4:

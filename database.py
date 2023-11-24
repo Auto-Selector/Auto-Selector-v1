@@ -42,4 +42,4 @@ def newOpMode(listname, name, side, location, score, concistency):
 ##reads a given opmode from its name
 def read(name, listName):
     desiredOpModes = [opMode for opMode in listName if name.lower() == str(opMode[0]).lower()]
-    return desiredOpModes
+    return desiredOpModes[0]
