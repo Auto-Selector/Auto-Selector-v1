@@ -29,3 +29,14 @@ while True:
         database.save(opModes)
     if choice == 5:
         opModes = database.load()
+    if choice == 6:
+        name = str(input("Enter the name: "))
+        if database.read(name, opModes):
+            for opMode in opModes:
+                if opMode in database[name]:
+                    del database[name][opMode]
+                    print(f'opMode {opMode} deleted')
+                else:
+                    print(f'opMode {opMode} does not exist')
+        else:
+            print(f'Name {name} does not exist')
