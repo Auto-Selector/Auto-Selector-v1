@@ -36,6 +36,6 @@ while True:
         name = str(input("Enter the name: "))
         complete = database.delete(name, opModes)
         if complete:
-            print(str(name) + "was sucessfully deleted")
+            print(str(name) + " was sucessfully deleted")
         if not complete:
             print("OpMode does not exist")
