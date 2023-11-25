@@ -23,7 +23,7 @@ while True:
             try:
                 image.open("img/"+str(result[5])).show()
             except:
-                print("the file does not exist. Did you put an extention?")
+                print("The file does not exist. Did you add the type of image to the end of your image name?")
         else:
             print("That OpMode does not exist")
 
