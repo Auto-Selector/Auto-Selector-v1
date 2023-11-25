@@ -1,4 +1,5 @@
 import database
+from PIL import Image as image
 
 global opModes
 opModes = database.load()
@@ -6,7 +7,7 @@ global opMode
 opMode = []
 choice = 0
 while True:
-    choice = int(input(" 1 to print the masterlist. 2 to read a spcific opmode. \n3 to add another opmode. 4 to save. 5 to reset changes."))
+    choice = int(input(" 1 to print the masterlist. 2 to read a spcific opmode. \n3 to add another opmode. 4 to save. 5 to reset changes. 6 to delete an opmode"))
     if choice == 1:
         print(*opModes,sep='\n')
     if choice == 2:
@@ -18,6 +19,8 @@ while True:
             print("Start Location: " + str(result[2]))
             print("Max Score: " + str(result[3]))
             print("Concistancy rating: " + str(result[4]))
+            print("Image Name: " + str(result[5]))
+            image.open("img/"+str(result[5])).show()
         else:
             print("That OpMode does not exist")
 
@@ -27,7 +30,8 @@ while True:
         location = str(input("enter the location: "))
         score = str(input("enter the max score: " ))
         concistancy = str(input("enter the concistency(1-10): "))
-        opModes = database.newOpMode(opModes, name, side, location, score, concistancy)
+        imageName = str(input("What is your image name? "))
+        opModes = database.newOpMode(opModes, name, side, location, score, concistancy, imageName)
     if choice == 4:
         database.save(opModes)
     if choice == 5:

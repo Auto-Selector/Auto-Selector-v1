@@ -12,6 +12,8 @@ def load():
         with open('database.txt', 'rb') as f:
             database = pickle.load(f)
             f.close()
+            if not os.path.exists('img'):
+                os.mkdir('img')
             return database
     else:
         with open('database.txt', 'w') as f:
@@ -19,8 +21,11 @@ def load():
             with open('database.txt', 'wb') as f:
                 database = []
                 pickle.dump(database, f)
+                if not os.path.exists('img'):
+                    os.mkdir('img')
                 return database
-        
+
+            
 ##saves and closes the database
 def save(listName):
     with open('database.txt', 'wb') as f:
@@ -28,7 +33,7 @@ def save(listName):
         return True
 
 ##takes the inputs and makes a new opMode in the database
-def newOpMode(listname, name, side, location, score, concistency):
+def newOpMode(listname, name, side, location, score, concistency, imageName):
     newOpMode = []
     newOpMode.append(name)
     databaseIndex.append(name)
@@ -36,6 +41,7 @@ def newOpMode(listname, name, side, location, score, concistency):
     newOpMode.append(location)
     newOpMode.append(score)
     newOpMode.append(concistency)
+    newOpMode.append(imageName)
     listname.append(newOpMode)
     return listname
 
@@ -46,7 +52,6 @@ def read(name, listName):
 
 def delete(name, listName):
     index = next((i for i, opMode in enumerate(listName) if name.lower() == str(opMode[0]).lower()), None)
-    print(index)
     if index != 'None':
         listName.pop(index)
         return True
