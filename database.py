@@ -50,6 +50,7 @@ def read(name, listName):
     desiredOpMode = [opMode for opMode in listName if name.lower() == str(opMode[0]).lower()] 
     return desiredOpMode[0]
 
+##deletes a given opmode from its name
 def delete(name, listName):
     index = next((i for i, opMode in enumerate(listName) if name.lower() == str(opMode[0]).lower()), None)
     if index != 'None':
