@@ -20,7 +20,10 @@ while True:
             print("Max Score: " + str(result[3]))
             print("Concistancy rating: " + str(result[4]))
             print("Image Name: " + str(result[5]))
-            image.open("img/"+str(result[5])).show()
+            try:
+                image.open("img/"+str(result[5])).show()
+            except:
+                print("the file does not exist. Did you put an extention?")
         else:
             print("That OpMode does not exist")
 
